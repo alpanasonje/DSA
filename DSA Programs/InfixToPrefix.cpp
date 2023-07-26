@@ -95,11 +95,11 @@ int main()
                 st.push(symbol);
             else if (st.peek()==')')
                 st.push(symbol);
-            else if (getPrecedence(symbol)<getPrecedence(st.peek()))
+            else if (getPrecedence(symbol)>=getPrecedence(st.peek()))
                 st.push(symbol);
             else
             {
-                while(getPrecedence(symbol)>=getPrecedence(st.peek()) && st.isEmpty()!=1)
+                while(getPrecedence(symbol)<getPrecedence(st.peek()) && st.isEmpty()!=1)
                 {
                     prefix[j++]=st.pop();
                 }

@@ -20,7 +20,7 @@ class Stack{
     }
     char pop(){
         if (isEmpty()==1)
-            return '*';
+            return '#';
         else
             return data[top--];
     }
@@ -38,7 +38,7 @@ class Stack{
     }
     char peek(){
         if (isEmpty()==1)
-            return '*';
+            return '#';
         return data[top];
     }
 };
@@ -89,11 +89,11 @@ int main()
                 st.push(symbol);
             else if (st.peek()=='(')
                 st.push(symbol);
-            else if (getPrecedence(symbol)>=getPrecedence(st.peek()))
+            else if (getPrecedence(symbol)>getPrecedence(st.peek()))
                 st.push(symbol);
             else
             {
-                while(getPrecedence(symbol)<getPrecedence(st.peek()) && st.isEmpty()!=1)
+                while(getPrecedence(symbol)<=getPrecedence(st.peek()) && st.isEmpty()!=1)
                 {
                     postfix[j++]=st.pop();
                 }
